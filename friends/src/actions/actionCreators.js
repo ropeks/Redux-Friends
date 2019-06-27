@@ -50,12 +50,12 @@ export function addFriend(friend) {
         const token = localStorage.getItem('token');
         const axiosConfig = token ? { headers: { 'Authorization': token }}: null;
         
-        axios.post('http://localhost:5000/api/friends', axiosConfig, friend)
+        axios.post('http://localhost:5000/api/friends', friend, axiosConfig)
             .then(res => {
                 dispatch({ type: ADD_FRIEND_SUCCESS, payload: res.data });
             })
             .catch(err => {
-                dispatch({ type: ADD_FRIEND_FAILURE, payload: err.response.data.error });
+                dispatch({ type: ADD_FRIEND_FAILURE, payload: err });
             })
     }
 }

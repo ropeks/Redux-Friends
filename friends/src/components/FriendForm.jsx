@@ -11,9 +11,9 @@ function FriendForm(props) {
         const email = e.target['email'];
 
         const newFriend = {
-            name: name,
-            age: age,
-            email: email
+            name: name.value,
+            age: age.value,
+            email: email.value
         }
 
         name.value &&
