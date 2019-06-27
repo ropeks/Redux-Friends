@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Friend from './Friend';
-
+import FriendForm from './FriendForm';
 import { getFriends } from '../actions/actionCreators';
+
 
 class FriendsList extends React.Component {
     // state = { friends: [] }
@@ -22,6 +23,7 @@ class FriendsList extends React.Component {
                         />
                     ))
                 }
+                <FriendForm />
             </div>
         )
     }

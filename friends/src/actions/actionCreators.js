@@ -5,7 +5,10 @@ import {
     GET_FRIENDS_FAILURE,
     LOGGING_IN,
     LOGIN_SUCCESS,
-    LOGIN_FAILURE
+    LOGIN_FAILURE,
+    ADDING_FRIEND,
+    ADD_FRIEND_SUCCESS,
+    ADD_FRIEND_FAILURE
 } from './actionTypes';
 
 export function getFriends()  {
@@ -37,5 +40,22 @@ export function login(credentials) {
         .catch(err => {
           dispatch({ type: LOGIN_FAILURE, payload: err.response.data.error });
         });
+    }
+}
+
+export function addFriend(friend) {
+    return (dispatch) => {
+        dispatch({ type: ADDING_FRIEND });
+
+        const token = localStorage.getItem('token');
+        const axiosConfig = token ? { headers: { 'Authorization': token }}: null;
+        
+        axios.post('http://localhost:5000/api/friends', axiosConfig, friend)
+            .then(res => {
+                dispatch({ type: ADD_FRIEND_SUCCESS, payload: res.data });
+            })
+            .catch(err => {
+                dispatch({ type: ADD_FRIEND_FAILURE, payload: err.response.data.error });
+            })
     }
 }
