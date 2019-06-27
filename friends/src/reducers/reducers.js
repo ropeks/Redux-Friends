@@ -16,9 +16,6 @@ export function friendsReducer(sliceOfState = [], action) {
         case GET_FRIENDS_SUCCESS:
             return action.payload;
 
-        case LOGIN_SUCCESS:
-            return action.payload;
-
         case ADD_FRIEND_SUCCESS:
             return action.payload;
             
