@@ -2,11 +2,11 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import RestrictedRoute from './HOCs/RestrictedRoute';
 import { connect } from 'react-redux';
-import FriendsList from './components/FriendsList';
+import FriendsList from './components/Friends';
 import Login from './components/Login';
 import './App.css';
 
-function App() {
+function App(props) {
   // state = {
   //   errorMessage: '',
   //   requestPending: false
@@ -14,14 +14,14 @@ function App() {
 
   return (
     <div className="App">
-      {/* {
-        this.props.errorMessage
-        && <h2 style={{color: 'red'}}>{ this.props.errorMessage }</h2>
+      {
+        props.errorMessage
+        && <h2 style={{color: 'red'}}>{ props.errorMessage }</h2>
       }
       {
-        this.props.requestPending
+        props.requestPending
         && <h2>Loading...</h2>
-      } */}
+      }
       <RestrictedRoute exact path="/" component={FriendsList} />
       <Route path="/login" component={Login} />
     </div>
