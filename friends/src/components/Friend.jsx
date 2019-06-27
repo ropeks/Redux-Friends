@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Friend() {
+function Friend(props) {
     return (
         <div>
-            I'm your friend.
+            <strong>{props.friend.name}</strong>
         </div>
     )
 }
